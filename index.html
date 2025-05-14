@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Para Minha Namorada ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Fredoka', sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      position: relative;
+      background-color: #fff0f5;
+    }
+    #questionContainer {
+      position: relative;
+      height: 300px;
+    }
+    button {
+      position: absolute;
+      padding: 12px 24px;
+      font-size: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 12px;
+      background-color: #ffc0cb;
+      color: #fff;
+      font-family: 'Fredoka', sans-serif;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #ff69b4;
+    }
+    #yesBtn {
+      left: 30%;
+    }
+    #noBtn {
+      left: 60%;
+    }
+    #heartLoader {
+      display: none;
+      font-size: 24px;
+      color: #ff69b4;
+    }
+    #resultContainer {
+      display: none;
+      margin-top: 20px;
+    }
+    #gifResult {
+      width: 250px;
+      height: auto;
+      margin-top: 15px;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Você quer ficar comigo para sempre? ❤️</h1>
+  <div id="questionContainer">
+    <button id="yesBtn">Sim</button>
+    <button id="noBtn">Não</button>
+  </div>
+
+  <div id="heartLoader">Carregando... 💖</div>
+
+  <div id="resultContainer">
+    <p>Eu sabia! Você é o amor da minha vida! 💖</p>
+    <img id="gifResult" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Gatinho fofo">
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const questionContainer = document.getElementById("questionContainer");
+    const heartLoader = document.getElementById("heartLoader");
+    const resultContainer = document.getElementById("resultContainer");
+    const gifResult = document.getElementById("gifResult");
+
+    function moveNoButton() {
+      const newX = Math.floor(Math.random() * (questionContainer.offsetWidth - noBtn.offsetWidth));
+      const newY = Math.floor(Math.random() * (questionContainer.offsetHeight - noBtn.offsetHeight));
+      noBtn.style.left = `${newX}px`;
+      noBtn.style.top = `${newY}px`;
+    }
+
+    noBtn.addEventListener("mouseover", moveNoButton);
+    noBtn.addEventListener("touchstart", moveNoButton);
+
+    yesBtn.addEventListener("click", () => {
+      heartLoader.style.display = "block";
+      setTimeout(() => {
+        heartLoader.style.display = "none";
+        resultContainer.style.display = "block";
+      }, 3000);
+    });
+  </script>
+
+</body>
+</html>
